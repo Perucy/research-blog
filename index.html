@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <p class="hero-eyebrow">Research & Writing</p>
+  <h1 class="hero-title">Thoughts on AI,<br /><em>alignment, and what comes next.</em></h1>
+  <p class="hero-sub">By {{ site.author }} — software engineer thinking seriously about AI safety, interpretability, and the long arc of machine intelligence.</p>
+</section>
+
+<section class="posts">
+  {% for post in site.posts %}
+
+    <article class="post-card {% if forloop.first %}featured{% endif %}">
+      <div class="post-meta">
+        {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}
+        <span class="date">{{ post.date | date: "%B %-d, %Y" }}</span>
+      </div>
+      <h2 class="post-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+      <a href="{{ post.url | relative_url }}" class="read-more">Read essay <span>→</span></a>
+    </article>
+
+    {% unless forloop.last %}
+      <div class="post-divider"></div>
+    {% endunless %}
+
+  {% endfor %}
+</section>
