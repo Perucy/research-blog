@@ -1,0 +1,21 @@
+title: Perucy Mussiba
+description: Research & thoughts on AI, alignment, and what comes next.
+author: Perucy Mussiba
+baseurl: "/blog"
+url: "https://perucy.github.io"
+
+github_username: Perucy
+linkedin: perucy-mussiba-361846222
+location: Somerville, MA
+
+permalink: /posts/:slug/
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
