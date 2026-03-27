@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<section class="post-hero">
+  <span class="tag">{{ page.tag }}</span>
+  <h1>{{ page.title }}</h1>
+  <div class="post-byline">
+    <span>{{ site.author }}</span>
+    <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+    <span>{{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+  </div>
+</section>
+
+<article class="post-body">
+  {{ content }}
+</article>
+
+<div class="post-footer">
+  <a href="{{ '/' | relative_url }}" class="back-link">← All posts</a>
+  <span style="font-size: 0.82rem; color: var(--muted);">{{ site.author }} · {{ page.date | date: "%B %Y" }}</span>
+</div>
