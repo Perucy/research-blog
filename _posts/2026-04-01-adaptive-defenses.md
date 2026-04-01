@@ -2,7 +2,7 @@
 layout: post
 title: "Adaptive Defenses Against Multi-Turn LLM Jailbreaks"
 date: 2026-04-01
-tag: Alignment
+tag: Adaptive Defenses
 ---
 
 # Building Adaptive Defenses Against Multi-Turn LLM Jailbreaks: A 5-Layer Framework
