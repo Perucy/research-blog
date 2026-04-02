@@ -1,12 +1,23 @@
+---
+layout: post
+title: "Adaptive Defenses Against Multi-Turn LLM Jailbreaks"
+date: 2026-04-02
+tag: AI Security
+---
+
+A detailed proposal of a defense framework against multi-turn jailbreak attacks.
+
+---
+
 ## Adaptive Defenses for LLMs
 LLMs are powerful tools that have proven to be useful in simple tasks as well as complex ones. Despite their sophisticated architecture and usefulness, LLMs are higly vulnerable to jailbreak attacks that interfere with their safety aligned mechanisms aimed to ensure that they do not produce prohibited or harmful content while interacting with the users or other systems.  
 Multi-turn (Crescendo) jailbreak attacks are one of the most difficult attacks to mitigate because they exploit the core features that LLMs rely on when providing outputs to user requests. These features are context amplification and commitment. Context amplification aims to enhance the model's performance by providing relevant, detailed information. Context commitment is the tendency of models to prioritize information within their immediate, active prompt context over their broader pre-trained knowledge.   
 The current LLM defenses against jailbreak attacks are per-turn that only focuses on a single query, ignoring other queries in the session or rely on surface signals such as keyword matching and trigram similarity across individual messages. These defenses have proven to be futile against multi-turn attacks as these attacks are adaptive towards defenses.  
 Therefore, I propose four defensive mechanisms at a session level to protect LLMs from multi-turn attacks. These defenses include: reverse context commitment and amplification, output trajectory monitoring, cross-signal correlation and intent priming detection. The mechanisms aim to use previous successful multi-turn attacks to train models to detect such attacks or compare them to new attacks and determine if the attacks are harmful. In addition, the defenses rely on studying the session trajectory and predict intent to harm from user's requests and act accordingly by terminating the session.
 
-
-### Related Work
 ---
+
+### Related Work. 
 We build on the following prior works in multu-turn jailbreak attacks and session-level defenses.  
 
 **Core Attack Papers**
@@ -34,6 +45,7 @@ We build on the following prior works in multu-turn jailbreak attacks and sessio
     This research aims to show how LLM defenses are not robust to multi-turn human jailbreaks. The paper reinforces the presence of defenses that only protect models against single-turn jailbreaks, and not multi-turn attacks that pose more danger to LLMs. They demonstrate how these attacks uncover over 70% attack success rate (ASR) compared to the sing;e-digit ASRs with automated single-turn attacks. The result of the study are compiled into Multi-Turn Human Jailbreaks (MHJ), a dataset of 2912 prompts across 537 multi-turn jailbreaks. The limitations of this work includes: defenses are primarily evaluated against automated adversarial attacks in single turn on conversation--an insufficnet threat model for real-world malicious use, it does not propose new defense rather it diagnoses the problem, and it leaves the question of how to build defenses that handle human-driven multi-turn attacks completely open.  
     This study establishes the emprical foundation for our research--demonstrating that the multi-turn human jailbreak problem remains unsolved and motivating the session-level defensive framework we propose.  
 
+---
 
 ### Our framework can be divided into four mechanisms:
 - Reverse context commitment and amplification:
@@ -61,12 +73,15 @@ We build on the following prior works in multu-turn jailbreak attacks and sessio
     - Only subtle inputs maybe analyzed leaving out the jailbreak inputs since we only analyze a limited number of initial inputs.
     - An attacker fully aware of this defense would opt to subtle inputs that are undetectable
 
+---
 
 ### Limitations
 - Dual-use false positive ceiling. A sophisticated attacker can craft subtle attacks that mimic queries asked by an avid, curious, non-malicious user. Hence, the attacks might go unnoticed and affect the models. This problem cannot be solved through engineering. This represents a fundamental detection ceiling -- no classification system can distinguish identical queries based on intent alone, regardless of engineering sophistication.
 - Adversarial optimization. An adversary that is aware of the implemented defense mechanisms against crescendo attacks can craft campaigns that keep inputs operationally subtle, fragment outputs below flagging thresholds, randomize opening queries to evade intent priming, and vary phrasing to avoid cross-signal correlation -- simultaneously defeating the entire framework
 - Fragmentation aggregation. An adversary can perform subtle, unnoticeable crescendo attacks to obtain fragments of unsafe content and then externally aggregate the fragments to form a complete content they needed.
 - Inter model attacks. Models have varying strength and defenses against multi-turn jailbreak attacks. Therefore, an attacker can leverage powerful models to craft attacks and implement them on weaker models. This is difficult to address at the individual model level since it exploits the heterogeneity of the broader LLM ecosystem.
+
+---
 
 ### Future Work
 - Future work could explore cross-session behaviroal profiling to detect patterns of intent that only emerge across multiple interactions. For example, a legitimate historian asks once, an attacker returns repeatedly with escalating specificity.
