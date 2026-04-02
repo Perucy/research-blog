@@ -69,9 +69,11 @@ Multi-layer detection significantly outperformed single-layer approaches:
 |---|---|
 | Individual layers | 7–33% |
 | Combined framework (SafeMTData) | **47%** |
-| Improvement over per-query baseline | **+40%** |
+| Improvement over per-query baseline | **+40%** |   
+
 
 Active intervention also proved feasible—12 real-time safety interventions triggered across campaigns, demonstrating that live defense is technically viable, not just theoretical.
+
 
 ### What Didn't Work
 
