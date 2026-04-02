@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Adaptive Defenses Against Multi-Turn LLM Jailbreaks"
-date: 2026-04-01
+date: 2026-04-02
 tag: AI Security
 ---
 
