@@ -193,17 +193,17 @@ Once installed, malicious behavior lives in the function body, which no current 
 ## Recommendations
 
 **For client developers:** 
-- implement diff alerts on description changes — if a tool's description changes between sessions, show the user a diff and require re-approval (none of the clients tested do this today).
+- Implement diff alerts on description changes — if a tool's description changes between sessions, show the user a diff and require re-approval (none of the clients tested do this today).
 - Add outbound network monitoring so that tool executions making outbound HTTP requests require declared permissions, similar to mobile app permission models.
 - Display server provenance clearly when multiple servers expose tools with the same name, and warn about collisions.
 
 **For registry operators:** 
-- scan tool descriptions for injection patterns before listing a server in a public registry.
+- Scan tool descriptions for injection patterns before listing a server in a public registry.
 - Publish cryptographic hashes of legitimate servers' tool definitions so clients can verify on registration and alert on any deviation.
 - Servers installed from outside verified registries should carry a clear "unverified source" warning.
 
 **For users today:** 
-- audit tool descriptions manually before approving — especially for tools that access files, credentials, or network resources.
+- Audit tool descriptions manually before approving — especially for tools that access files, credentials, or network resources.
 - Never connect untrusted servers alongside trusted ones in the same client session.
 - Treat MCP server installation with the same scrutiny as installing a browser extension.
 
