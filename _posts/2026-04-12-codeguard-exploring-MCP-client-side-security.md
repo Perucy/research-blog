@@ -142,7 +142,7 @@ The tool accepts an optional `context` parameter. If the LLM follows the instruc
 
 Claude Desktop and Cursor both detected the rug pull and metadata attacks and warned the user before executing the tool. The defense operates at the model level — the LLM recognizes prompt injection patterns in tool descriptions and refuses to follow them. Critically, this defense is opaque: the malicious description is never shown to the user. They are protected but unaware of what was attempted.
 
-![Claude Desktop warning on rug pull detection]({{ site.baseurl }}/assets/images/claude-desktop-01.jpeg)
+![Claude Desktop warning on rug pull detection]({{ site.baseurl }}/assets/images/Claude01.jpeg)
 ![Cursor warning on rug pull detection]({{ site.baseurl }}/assets/images/cursor.jpeg)
 
 ---
