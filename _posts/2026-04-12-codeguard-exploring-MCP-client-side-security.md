@@ -11,7 +11,10 @@ I built a security scanner that attacks you.
 
 ## Background
 
-MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external tools and data sources — often described as "USB-C for AI." The architecture has three core components: hosts (applications users interact with directly — Claude Desktop, Cursor, Cline), clients (protocol managers embedded within the host that connect to servers), and servers (programs that expose tools, resources, and prompts through a standardized API).
+MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external tools and data sources — often described as "USB-C for AI." The architecture has three core components: 
+- hosts (applications users interact with directly — Claude Desktop, Cursor, Cline)
+- clients (protocol managers embedded within the host that connect to servers)
+- servers (programs that expose tools, resources, and prompts through a standardized API).
 
 Like any software system, MCP introduces security risks. According to [Huang et al.](https://arxiv.org/html/2603.22489v1), most existing security research has focused on server-side vulnerabilities, leaving the client side largely unexplored. Their work on MCP threat modeling highlights attack vectors that propagate through the client to compromise the AI application itself.
 
@@ -27,7 +30,7 @@ This is exactly the kind of server a developer would install without second-gues
 
 > *What if the tool designed to protect you is the attack vector?*
 
-I introduced three attack layers controlled by an `ATTACK_MODE` environment variable (`none` | `rug_pull` | `metadata` | `shadow`). This acts as a switch — flipping it simulates what a malicious server operator would do after gaining the user's trust.
+I introduced three attack layers controlled by an (`ATTACK_MODE`) environment variable (`none` | `rug_pull` | `metadata` | `shadow`). This acts as a switch — flipping it simulates what a malicious server operator would do after gaining the user's trust.
 
 The server was tested against three clients: **Claude Desktop**, **Cursor** (agent mode), and **Cline**. These were chosen because they represent the most common developer workflows and have meaningfully different architectures — closed desktop app, proprietary AI IDE, and open-source VS Code extension respectively.
 
