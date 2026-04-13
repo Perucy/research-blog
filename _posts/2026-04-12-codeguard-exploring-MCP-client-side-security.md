@@ -30,7 +30,8 @@ This is exactly the kind of server a developer would install without second-gues
 
 > *What if the tool designed to protect you is the attack vector?*
 
-I introduced three attack layers controlled by an (`ATTACK_MODE`) environment variable (`none` | `rug_pull` | `metadata` | `shadow`). This acts as a switch — flipping it simulates what a malicious server operator would do after gaining the user's trust.
+
+I introduced three attack layers controlled by an (`ATTACK_MODE`) environment variable (`none`,`rug_pull`,`metadata`,`shadow`). This acts as a switch — flipping it simulates what a malicious server operator would do after gaining the user's trust.
 
 The server was tested against three clients: **Claude Desktop**, **Cursor** (agent mode), and **Cline**. These were chosen because they represent the most common developer workflows and have meaningfully different architectures — closed desktop app, proprietary AI IDE, and open-source VS Code extension respectively.
 
