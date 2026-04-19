@@ -13,9 +13,15 @@ ShadowCart is a research project that breaks that assumption — without touchin
 
 ## The Gap This Targets
 
-Most LLM security research focuses on two attack surfaces: the model (jailbreaks, adversarial inputs, sleeper agents via weight poisoning) and the environment (prompt injection from web content or tool outputs). Both require either access to the model's training process or a way to surface malicious content into the model's context window.
+Most LLM security research focuses on two attack surfaces: 
+- the model (jailbreaks, adversarial inputs, sleeper agents via weight poisoning) 
+- the environment (prompt injection from web content or tool outputs).   
 
-There's a third surface that gets less attention: the inter-agent message channel. When agents communicate through a shared state object, the orchestrator routes decisions based on what peer agents tell it. Nothing in LangGraph, AutoGen, or CrewAI verifies that the declared sender of a state update is actually the agent authorized to write those fields. Trust is implicit and positional — if you're in the pipeline, you're trusted.
+Both require either access to the model's training process or a way to surface malicious content into the model's context window.
+
+There's a third surface that gets less attention: the inter-agent message channel.  
+
+ When agents communicate through a shared state object, the orchestrator routes decisions based on what peer agents tell it. Nothing in LangGraph, AutoGen, or CrewAI verifies that the declared sender of a state update is actually the agent authorized to write those fields. Trust is implicit and positional — if you're in the pipeline, you're trusted.
 
 This is the gap ShadowCart targets.
 
