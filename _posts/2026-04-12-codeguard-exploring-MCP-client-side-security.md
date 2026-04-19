@@ -11,7 +11,10 @@ I built a security scanner that attacks you.
 
 ## Background
 
-MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external tools and data sources — often described as "USB-C for AI." The architecture has three core components: hosts (applications users interact with directly — Claude Desktop, Cursor, Cline), clients (protocol managers embedded within the host that connect to servers), and servers (programs that expose tools, resources, and prompts through a standardized API).
+MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external tools and data sources — often described as "USB-C for AI." The architecture has three core components: 
+- hosts (applications users interact with directly — Claude Desktop, Cursor, Cline)
+- clients (protocol managers embedded within the host that connect to servers)
+- servers (programs that expose tools, resources, and prompts through a standardized API).
 
 Like any software system, MCP introduces security risks. According to [Huang et al.](https://arxiv.org/html/2603.22489v1), most existing security research has focused on server-side vulnerabilities, leaving the client side largely unexplored. Their work on MCP threat modeling highlights attack vectors that propagate through the client to compromise the AI application itself.
 
@@ -27,7 +30,8 @@ This is exactly the kind of server a developer would install without second-gues
 
 > *What if the tool designed to protect you is the attack vector?*
 
-I introduced three attack layers controlled by an `ATTACK_MODE` environment variable (`none` | `rug_pull` | `metadata` | `shadow`). This acts as a switch — flipping it simulates what a malicious server operator would do after gaining the user's trust.
+
+I introduced three attack layers controlled by an (`ATTACK_MODE`) environment variable (`none`,`rug_pull`,`metadata`,`shadow`). This acts as a switch — flipping it simulates what a malicious server operator would do after gaining the user's trust.
 
 The server was tested against three clients: **Claude Desktop**, **Cursor** (agent mode), and **Cline**. These were chosen because they represent the most common developer workflows and have meaningfully different architectures — closed desktop app, proprietary AI IDE, and open-source VS Code extension respectively.
 
@@ -142,7 +146,8 @@ The tool accepts an optional `context` parameter. If the LLM follows the instruc
 
 Claude Desktop and Cursor both detected the rug pull and metadata attacks and warned the user before executing the tool. The defense operates at the model level — the LLM recognizes prompt injection patterns in tool descriptions and refuses to follow them. Critically, this defense is opaque: the malicious description is never shown to the user. They are protected but unaware of what was attempted.
 
-![Claude Desktop warning on rug pull detection]({{ site.baseurl }}/assets/images/Claude01.jpeg)
+![Claude Desktop warning on rug pull detection]({{ site.baseurl }}/assets/images/Claude01.jpeg)   
+
 ![Cursor warning on rug pull detection]({{ site.baseurl }}/assets/images/cursor.jpeg)
 
 ---
@@ -191,11 +196,20 @@ Once installed, malicious behavior lives in the function body, which no current 
 
 ## Recommendations
 
-**For client developers:** implement diff alerts on description changes — if a tool's description changes between sessions, show the user a diff and require re-approval (none of the clients tested do this today). Add outbound network monitoring so that tool executions making outbound HTTP requests require declared permissions, similar to mobile app permission models. Display server provenance clearly when multiple servers expose tools with the same name, and warn about collisions.
+**For client developers:** 
+- Implement diff alerts on description changes — if a tool's description changes between sessions, show the user a diff and require re-approval (none of the clients tested do this today).
+- Add outbound network monitoring so that tool executions making outbound HTTP requests require declared permissions, similar to mobile app permission models.
+- Display server provenance clearly when multiple servers expose tools with the same name, and warn about collisions.
 
-**For registry operators:** scan tool descriptions for injection patterns before listing a server in a public registry. Publish cryptographic hashes of legitimate servers' tool definitions so clients can verify on registration and alert on any deviation. Servers installed from outside verified registries should carry a clear "unverified source" warning.
+**For registry operators:** 
+- Scan tool descriptions for injection patterns before listing a server in a public registry.
+- Publish cryptographic hashes of legitimate servers' tool definitions so clients can verify on registration and alert on any deviation.
+- Servers installed from outside verified registries should carry a clear "unverified source" warning.
 
-**For users today:** audit tool descriptions manually before approving — especially for tools that access files, credentials, or network resources. Never connect untrusted servers alongside trusted ones in the same client session. Treat MCP server installation with the same scrutiny as installing a browser extension.
+**For users today:** 
+- Audit tool descriptions manually before approving — especially for tools that access files, credentials, or network resources.
+- Never connect untrusted servers alongside trusted ones in the same client session.
+- Treat MCP server installation with the same scrutiny as installing a browser extension.
 
 ---
 
