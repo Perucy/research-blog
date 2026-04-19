@@ -192,6 +192,6 @@ Until they do, every pipeline that implicitly trusts its sub-agents has this sur
 
 ---
 
-*All credentials are synthetic. The payment system is a self-contained mock with no connection to any real financial infrastructure. This is a research prototype for demonstrating an architectural gap — not a deployable tool. Full code is available on [GitHub](https://github.com/Perucy/shadowcart).*
+*All credentials are synthetic. The payment system is a self-contained mock with no connection to any real financial infrastructure. This is a research prototype for demonstrating an architectural gap — not a deployable tool. Full code is available on [GitHub](https://github.com/Perucy/AI-Research/shadowcart).*
 
 *This post is part of an ongoing research series on agentic system security. Previous: [CodeGuard — MCP server security research](/research-blog/posts/codeguard-exploring-mcp-client-side-security/) · [Adaptive defenses against multi-turn jailbreaks](/research-blog/posts/adaptive-defenses/)*
