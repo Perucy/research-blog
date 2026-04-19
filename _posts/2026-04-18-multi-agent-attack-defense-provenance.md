@@ -36,7 +36,7 @@ The attack vector is supply chain. The attacker's agent enters the trust boundar
 Two assumptions make this realistic. First, the attacker operates black-box — they don't know the orchestrator's internal logic, the other agents' roles, or the pipeline architecture. They only know the general domain and can infer the rough structure of inter-agent messages from outputs. Second, the compromised agent behaves legitimately for N sessions before activating, building a history of clean transactions. This decouples the infection event from the fraud event — by the time the attack fires, the agent has established trust.
 
 
-![ShadowCart threat model diagram]({{ site.baseurl }}/assets/images/shadowcart_threat_model.jpg)
+![ShadowCart threat model diagram]({{ site.baseurl }}/assets/images/shadowcart_threat_model.png)
 
 
 ---
