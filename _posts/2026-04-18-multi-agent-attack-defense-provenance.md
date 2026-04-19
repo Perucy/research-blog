@@ -35,7 +35,9 @@ The attack vector is supply chain. The attacker's agent enters the trust boundar
 
 Two assumptions make this realistic. First, the attacker operates black-box — they don't know the orchestrator's internal logic, the other agents' roles, or the pipeline architecture. They only know the general domain and can infer the rough structure of inter-agent messages from outputs. Second, the compromised agent behaves legitimately for N sessions before activating, building a history of clean transactions. This decouples the infection event from the fraud event — by the time the attack fires, the agent has established trust.
 
+
 ![ShadowCart threat model diagram]({{ site.baseurl }}/assets/images/shadowcart-threat-model.jpg)
+
 
 ---
 
@@ -192,6 +194,6 @@ Until they do, every pipeline that implicitly trusts its sub-agents has this sur
 
 ---
 
-*All credentials are synthetic. The payment system is a self-contained mock with no connection to any real financial infrastructure. This is a research prototype for demonstrating an architectural gap — not a deployable tool. Full code is available on [GitHub](https://github.com/Perucy/AI-Research/tree/main/shadowcart).*
+*All credentials are synthetic. The payment system is a self-contained mock with no connection to any real financial infrastructure. This is a research prototype for demonstrating an architectural gap — not a deployable tool. Full code is available on [GitHub](https://github.com/Perucy/AI-Research/).*
 
 *This post is part of an ongoing research series on agentic system security. Previous: [CodeGuard — MCP server security research](https://perucy.github.io/research-blog/posts/codeguard-exploring-mcp-client-side-security/) · [Adaptive defenses against multi-turn jailbreaks](https://perucy.github.io/research-blog/posts/adaptive-defenses/)*
